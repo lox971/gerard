@@ -1,4 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
@@ -6,5 +6,6 @@ class RegistrationsController < Devise::RegistrationsController
       new_mover_path
     else
       new_customer_path
+    end
   end
 end
