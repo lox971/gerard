@@ -8,7 +8,7 @@
         <%= f.input :email, required: true, autofocus: true %>
         <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
         <%= f.input :password_confirmation, required: true %>
-        <%= f.input :profile_type, as: :hidden, required: true %>
+        <%= f.hidden_field :profile_type, value: @_request.fullpath.split("?").last  %>
         <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
       <% end %>
 
