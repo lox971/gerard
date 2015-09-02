@@ -81,8 +81,6 @@ ActiveRecord::Schema.define(version: 20150901162707) do
     t.string   "provider"
     t.string   "uid"
     t.string   "picture"
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "token"
     t.datetime "token_expiry"
     t.integer  "profile_id"
