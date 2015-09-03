@@ -1,14 +1,16 @@
-<div class="container text-center">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <h1>Gérard</h1>
-      <p>Your personal mover</p>
-      <br>
-      <%= link_to "Sign In", user_session_path, {class: "btn btn-warning"} %>
-      <hr>
-      <%= link_to "New ?", new_user_registration_path + "?customer", {class: "btn btn-warning"} %>
-      <tr>
-      <%= link_to "Become Mover", new_user_registration_path + "?mover", {class: "btn btn-primary"} %>
+<div class="banner text-center">
+  <div class="banner-background-shadow"> </div>
+    <div class="banner-content">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h1>Gérard</h1>
+        <p>Your personal mover</p>
+        <br>
+        <div class="banner-btn"><%= link_to "Sign In", user_session_path, {class: "btn btn-warning"} %></div>
+        <hr>
+        <%= link_to "New ?", new_user_registration_path + "?customer", {class: "btn btn-warning"} %>
+        <tr>
+        <%= link_to "Become Mover", new_user_registration_path + "?mover", {class: "btn btn-primary"} %>
+      </div>
     </div>
-  </div>
 </div>
+
