@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
     resources :customers
+    resources :courses
 
 
 

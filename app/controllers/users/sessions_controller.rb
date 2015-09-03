@@ -4,7 +4,7 @@ class Users::SessionsController < Devise::SessionsController
     if resource.profile_type == "Mover"
       movers_path
     elsif resource.profile_type == "Customer"
-      customers_path
+      new_course_path
     else
       request.env['omniauth.origin'] || stored_location_for(resource) || root_path
     end
