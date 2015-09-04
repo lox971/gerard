@@ -5,15 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.profile_type == "mover"
       new_mover_path
     else
-      new_customer_path
-    end
-  end
-
-  def after_sign_in_path_for(resource)
-    if resource.profile_type == "mover"
-      new_mover_path
-    else
-      new_customer_path
+      new_course_path
     end
   end
 end

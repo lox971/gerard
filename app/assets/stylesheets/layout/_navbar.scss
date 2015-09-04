@@ -14,6 +14,19 @@
     display: flex;
     height: 40px;
     align-items: center;
+    padding: 5px;
+    margin: 0px;
+  }
+  &-brand {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: white
   }
   &-item {
     flex: 0 1 auto;
@@ -118,3 +131,5 @@
 .fa-users{
   color:orange
 }
+
+

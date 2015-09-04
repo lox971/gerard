@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901162707) do
+ActiveRecord::Schema.define(version: 20150903154941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 20150901162707) do
   create_table "courses", force: :cascade do |t|
     t.integer  "mover_id"
     t.integer  "customer_id"
-    t.string   "pick_up_address"
-    t.string   "drop_off_address"
     t.datetime "accepted_at"
     t.datetime "course_start_time"
     t.datetime "travel_start_time"
@@ -51,6 +49,16 @@ ActiveRecord::Schema.define(version: 20150901162707) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
+
+  create_table "sites", force: :cascade do |t|
+    t.string   "type_of"
+    t.string   "address"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sites", ["course_id"], name: "index_sites_on_course_id", using: :btree
 
   create_table "trucks", force: :cascade do |t|
     t.integer  "mover_id"
@@ -93,5 +101,6 @@ ActiveRecord::Schema.define(version: 20150901162707) do
 
   add_foreign_key "courses", "customers"
   add_foreign_key "courses", "movers"
+  add_foreign_key "sites", "courses"
   add_foreign_key "trucks", "movers"
 end
