@@ -6,10 +6,10 @@ class MoversController < ApplicationController
 
 
   def create
-    @mover = Mover.new(customer_params)
+    @mover = Mover.new(mover_params)
     @mover.user = current_user
     if @mover.save
-      redirect_to new_course_path
+      redirect_to courses_path
     else
       render :new
     end
@@ -31,8 +31,8 @@ class MoversController < ApplicationController
 
   private
 
-  def moverer_params
-    params.require(:mover).permit(:first_name, :last_name, :phone_number)
+  def mover_params
+    params.require(:mover).permit(:first_name, :last_name, :phone_number, :pictures)
   end
 
 end

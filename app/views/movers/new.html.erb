@@ -1,7 +1,6 @@
-new.html.erb
 
 
- <h2 class ="text-center">Profile page</h2>
+ <h2 class ="text-center">Profile page mover</h2>
 
 <%= simple_form_for(@mover) do |f| %>
   <%= f.error_notification %>
@@ -15,6 +14,14 @@ new.html.erb
 
 <div class="col-xs-12">
   <%=f.input :phone_number, placeholder:"Pour être contacté par le mover", label: "Téléphone"%>
+</div>
+
+<div class="col-xs_12">
+   <%= f.input :picture , label: "photo de votre permis de conduire"%>
+</div>
+
+<div class="col-xs_12">
+   <%= f.input :picture , label: "photo de la carte grise du véhicule"%>
 </div>
 
 <div class="col-xs-12 text-center">
