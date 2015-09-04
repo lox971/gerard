@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.profile_type == "mover"
       new_mover_path
     else
-      new_course_path
+      new_customer_path
     end
   end
 end
