@@ -11,8 +11,10 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
     @site = @course.sites.build
 
-    @site.address = address
-    @site.type_of = type
+    address
+    @site = @course.sites.build
+    type
+
     @course.save ? (redirect_to courses_path) : (render 'new')
   end
 
@@ -25,15 +27,19 @@ class CoursesController < ApplicationController
 
   def address
     params[:course][:sites_attributes]["0"].each do |key, value|
-        if "address" == key
-          return value
+      if "address" == key
+        @site.address = value
+      else
+        @site.type_of = value
       end
     end
   end
   def type
-    params[:course][:sites_attributes]["0"].each do |key, value|
-        if "type" == key
-          return value
+    params[:course][:sites_attributes]["1"].each do |key, value|
+      if "address" == key
+        @site.address = value
+      else
+        @site.type_of = value
       end
     end
   end

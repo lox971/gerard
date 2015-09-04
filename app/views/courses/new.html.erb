@@ -19,19 +19,22 @@
           <%#= ff.hidden_field :type, value: "drop_off" %>
         <%# end %>
 
-      <%= f.fields_for :sites do |ff| %>
+        <%= f.fields_for :sites do |ff| %>
           <%= ff.input :address, label: "Pick up address" %>
           <%= ff.hidden_field :type, value: "pick_up" %>
-          <% end %>
 
-        <%= f.button :submit, "Submit", class: "btn btn-primary" %>
-      <% end %>
+          <%= f.fields_for :sites do |ff| %>
+            <%= ff.input :address, label: "Drop off address" %>
+            <%= ff.hidden_field :type, value: "drop_off" %>
+
+          <%= f.button :submit, "Submit", class: "btn btn-primary" %>
+          <% end %>
     <%#= simple_form_for @course do |m| %>
       <%#= m.simple_fields_for :site do |c| %>
         <%#= c.input :type, as: :hidden %>
         <%#= c.input :field_value, label: c.object.field_key, input_html: { id: c.object.field_key } %>
-      <% #end %>
-    <% #end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
