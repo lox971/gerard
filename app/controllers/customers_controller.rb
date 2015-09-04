@@ -9,7 +9,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     @customer.user = current_user
     if @customer.save
-      redirect_to customers_path
+      redirect_to new_course_path
     else
       render :new
     end
