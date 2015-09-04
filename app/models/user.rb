@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
       user.picture = auth.info.image
       user.token = auth.credentials.token
       user.token_expiry = Time.at(auth.credentials.expires_at)
+      user.profile_type = "Customer"
     end
+
   end
 end
