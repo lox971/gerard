@@ -18,5 +18,6 @@ class User < ActiveRecord::Base
       user.token_expiry = Time.at(auth.credentials.expires_at)
       user.profile_type = "Customer"
     end
+
   end
 end
