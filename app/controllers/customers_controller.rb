@@ -11,7 +11,6 @@ class CustomersController < ApplicationController
     if @customer.save
       redirect_to customers_path
     else
-      raise
       render :new
     end
   end

@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150903154941) do
   end
 
   create_table "sites", force: :cascade do |t|
-    t.string   "type"
+    t.string   "type_of"
     t.string   "address"
     t.integer  "course_id"
     t.datetime "created_at", null: false
