@@ -1,4 +1,10 @@
+<<<<<<< HEAD
  <h2 class ="text-center">Profile page</h2>
+=======
+
+
+ <h2 class ="text-center">Profile page mover</h2>
+>>>>>>> f6787630dfdf96fae05d2713c9510e848f1f7b2a
 
 <%= simple_form_for(@mover) do |f| %>
   <%= f.error_notification %>
@@ -14,9 +20,23 @@
     <%=f.input :phone_number, placeholder:"Pour être contacté par le client", label: "Téléphone"%>
   </div>
 
+<<<<<<< HEAD
   <div class="col-xs-12 text-center">
     <h4>Votre email :  <%= current_user.email %></h4>
   </div>
+=======
+<div class="col-xs_12">
+   <%= f.input :picture , label: "photo de votre permis de conduire"%>
+</div>
+
+<div class="col-xs_12">
+   <%= f.input :picture , label: "photo de la carte grise du véhicule"%>
+</div>
+
+<div class="col-xs-12 text-center">
+  <h4>Votre email :  <%= current_user.email %></h4>
+</div>
+>>>>>>> f6787630dfdf96fae05d2713c9510e848f1f7b2a
 
   <div class="col-xs-12 text-center">
     <%= f.button :submit %>

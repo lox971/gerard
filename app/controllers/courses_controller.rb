@@ -1,7 +1,19 @@
 class CoursesController < ApplicationController
 
+  def index
+
+    if current_user.profile_id?
+    elsif current_user.profile_type == "customer" || "Customer"
+      redirect_to new_customer_path
+    else
+      redirect_to new_mover_path
+    end
+  end
+
+
 
   def new
+
     @course = Course.new
     @course.sites.build
   end
