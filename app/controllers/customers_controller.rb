@@ -21,8 +21,11 @@ class CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.update
-    redirect_to home_path
+    if @customer.update(customer_params)
+      redirect_to new_course_path
+    else
+      render :edit
+    end
   end
 
   def show
