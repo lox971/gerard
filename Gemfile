@@ -21,6 +21,8 @@ gem 'omniauth-facebook'
 
 gem "geocoder"
 
+gem 'activeadmin', github: 'activeadmin'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
