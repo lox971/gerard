@@ -35,7 +35,7 @@ class CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
-      redirect_to new_course_path
+      redirect_to customer_path(@customer)
     else
       render :edit
     end
@@ -54,7 +54,7 @@ class CustomersController < ApplicationController
   end
 
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :phone_number)
+    params.require(:customer).permit(:first_name, :last_name, :phone_number, :picture)
   end
 
 end

@@ -22,7 +22,7 @@ class MoversController < ApplicationController
   def update
     @mover = Mover.find(params[:id])
     @mover.update
-    redirect_to home_path
+    redirect_to show_mover_path(@mover)
   end
 
   def show
