@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :preview
 
   def index
 
@@ -11,7 +12,6 @@ class CoursesController < ApplicationController
   end
 
   def new
-
     @course = Course.new
     @course.sites.build
   end
@@ -25,14 +25,25 @@ class CoursesController < ApplicationController
     @site = @course.sites.build
     type
 
-    @course.save ? (redirect_to courses_path) : (render 'new')
+    if params[:home]
+      @course.save ? (redirect_to course_path(@course)) : (render 'pages/home')
+    else
+      @course.save ? (redirect_to courses_path) : (render 'new')
+    end
+  end
+
+  def preview
+
   end
 
 
   private
 
   def course_params
-    params.require(:course).permit(:mover_rating)
+    params.require(:course).permit(
+      :mover_rating,
+      :from
+    )
   end
 
   def address
