@@ -23,7 +23,7 @@ gem "geocoder"
 
 gem 'activeadmin', github: 'activeadmin'
 
-gem "pundit"
+gem 'pundit'
 
 group :development, :test do
   gem 'binding_of_caller'
