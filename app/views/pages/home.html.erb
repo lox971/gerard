@@ -3,14 +3,39 @@
     <div class="banner-content">
       <div class="col-sm-6 col-sm-offset-3">
         <h1>Gérard</h1>
-        <p>Your personal mover on-demand</p>
         <br>
-        <div class="banner-btn"><%= link_to "Sign In", user_session_path, {class: "btn btn-warning"} %></div>
-        <hr>
-        <%= link_to "New ?", new_user_registration_path + "?customer", {class: "btn btn-warning"} %>
-        <tr>
-        <%= link_to "Become Mover", new_user_registration_path + "?mover", {class: "btn btn-primary"} %>
+        <div class='form-home'>
+          <%= simple_form_for @course, url: preview_courses_path, method: 'get' do |f| %>
+
+            <%= f.fields_for :sites do |ff| %>
+              <%= ff.input :address, label: "Pick up address" %>
+              <%= ff.hidden_field :type, value: "pick_up" %>
+
+              <%= f.fields_for :sites do |ff| %>
+                <%= ff.input :address, label: "Drop off address" %>
+                <%= ff.hidden_field :type, value: "drop_off" %>
+                <%= ff.hidden_field :from, value: "home" %>
+                <br>
+                <%= f.button :submit, "Estimation", class: "btn btn-primary" %>
+              <% end %>
+              <% end %>
+          <% end %>
+        </div>
+        <div class="banner-btn">
+          <hr>
+          <%= link_to "Sign In", user_session_path, {class: "btn btn-warning"} %>
+        </div>
       </div>
     </div>
 </div>
 
+
+<!-- <div class= "text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      </div>
+    </div>
+  </div>
+</div>
+ -->
