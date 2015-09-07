@@ -7,6 +7,7 @@
   <div class = "text-center">
     <%= image_tag @mover.picture.url(:medium) %>
   </div>
+
   <div class="col-xs-6">
     <%= f.input :first_name, placeholder: "Votre prénom" , label: "Prénom"%>
   </div>
@@ -23,13 +24,17 @@
     <h4>Votre email :  <%= current_user.email %></h4>
   </div>
 
-<div class="col-xs_12">
-   <%= f.input :picture , label: "photo de votre permis de conduire"%>
-</div>
+  <div class="col-xs_12">
+   <%= f.input :picture , label: "photo de profile"%>
+  </div>
 
-<div class="col-xs_12">
-   <%= f.input :picture , label: "photo de la carte grise du véhicule"%>
-</div>
+  <div class="col-xs_12">
+     <%= f.input :picture , label: "photo de votre permis de conduire"%>
+  </div>
+
+  <div class="col-xs_12">
+     <%= f.input :picture , label: "photo de la carte grise du véhicule"%>
+  </div>
 
   <div class="col-xs-12 text-center">
     <%= f.button :submit %>
