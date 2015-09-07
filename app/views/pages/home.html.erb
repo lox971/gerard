@@ -3,6 +3,7 @@
     <div class="banner-content">
       <div class="col-sm-6 col-sm-offset-3">
         <h1>Gerard</h1>
+        <p>Your personnal mover</p>
         <br>
         <div class='form-home'>
           <%= simple_form_for @course, url: preview_courses_path, method: 'get' do |f| %>
@@ -22,7 +23,7 @@
           <% end %>
         </div>
         <div class="banner-btn">
-          <hr>
+
           <%= link_to "Sign In", user_session_path, {class: "btn btn-warning"} %>
           <%= link_to "Sign Up", new_user_registration_path + "?customer", {class: "btn btn-warning"} %>
           <br>
@@ -32,10 +33,3 @@
       </div>
     </div>
 </div>
-
-<!-- Include Google Maps JS API -->
-<script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDp6N1RFk7uGegeJBlNW9pKQmsY0ruzqDw "></script>
-
-<!-- Custom JS code to bind to Autocomplete API -->
-<script type="text/javascript" src="autocomplete.js"></script>
