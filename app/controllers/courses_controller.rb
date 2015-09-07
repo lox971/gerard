@@ -10,8 +10,6 @@ class CoursesController < ApplicationController
     end
   end
 
-
-
   def new
 
     @course = Course.new

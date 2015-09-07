@@ -19,8 +19,9 @@
   </div>
 
   <div class="col-xs-12 text-center">
-    <%= f.button :submit %>
+    <% if policy(@customer).create? %>
+      <%= f.button :submit %>
+    <% end %>
   </div>
-
 <% end %>
 
