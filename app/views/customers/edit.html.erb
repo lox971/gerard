@@ -1,7 +1,13 @@
 <h2 class ="text-center">Profile page</h2>
 
+
 <%= simple_form_for(@customer) do |f| %>
   <%= f.error_notification %>
+  <div class ="text-center">
+    <%= image_tag @customer.picture.url(:medium) %>
+  </div>
+
+
   <div class="col-xs-6">
     <%= f.input :first_name, placeholder: "Votre prénom" , label: "Prénom"%>
   </div>
@@ -18,8 +24,8 @@
     <h4>Votre email :  <%= current_user.email %></h4>
   </div>
 
-  <div class="col-xs-12 text-center">
-    <h4><%= f.file_field :picture %></h4>
+  <div class="col-xs-12">
+    <h4><%= f.input :picture%></h4>
   </div>
 
   <div class="col-xs-12 text-center">
