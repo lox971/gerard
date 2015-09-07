@@ -19,6 +19,10 @@
   </div>
 
   <div class="col-xs-12 text-center">
+    <h4><%= f.file_field :picture %></h4>
+  </div>
+
+  <div class="col-xs-12 text-center">
     <% if policy(@customer).create? %>
       <%= f.button :submit %>
     <% end %>
