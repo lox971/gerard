@@ -3,21 +3,34 @@
     <div class="banner-content">
       <div class="col-sm-6 col-sm-offset-3">
         <h1>Gerard</h1>
-        <p>Your personnal mover</p>
+
+          <section class="wrapper">
+            <h2 class="sentence">Move your
+              <div class="slidingVertical">
+                <span>couch</span>
+                <span>fridge</span>
+                <span>shelves</span>
+                <span>boxes</span>
+                <span>washer</span>
+              </div>
+            </h2>
+          </section>
+
         <br>
+
         <div class='form-home'>
           <%= simple_form_for @course, url: preview_courses_path, method: 'get' do |f| %>
 
             <%= f.fields_for :sites do |ff| %>
-              <%= ff.input :address, label: "Pick up address" %>
+              <%= ff.input :address, placeholder: "Put a pick up address", label: false %>
               <%= ff.hidden_field :type, value: "pick_up" %>
 
               <%= f.fields_for :sites do |ff| %>
-                <%= ff.input :address, label: "Drop off address" %>
+                <%= ff.input :address, placeholder: "Put a drop off address",label: false %>
                 <%= ff.hidden_field :type, value: "drop_off" %>
                 <%= ff.hidden_field :from, value: "home" %>
                 <br>
-                <%= f.button :submit, "Estimation", class: "btn btn-primary" %>
+                <%= f.button :submit, "Estimate", class: "btn btn-primary" %>
               <% end %>
               <% end %>
           <% end %>

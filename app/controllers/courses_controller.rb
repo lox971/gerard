@@ -13,6 +13,10 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @markers = Gmaps4rails.build_markers(@course) do |course, marker|
+      marker.lat course.sites.first.latitude
+      marker.lng course.sites.first.longitude
+    end
   end
 
   def new
@@ -22,12 +26,24 @@ class CoursesController < ApplicationController
 
 
   def create
-    @course = Course.new(course_params)
-    @site = @course.sites.build
+    @course = Course.create()
+    site_pick_up = Site.new
+    site_pick_up.address = params[:course][:sites_attributes]["0"]["address"]
+    site_pick_up.type_of = params[:course][:sites_attributes]["0"]["type"]
+    site_pick_up.save
+    @course.sites << site_pick_up
+    site_drop_of = Site.new
+    site_drop_of.address = params[:course][:sites_attributes]["1"]["address"]
+    site_drop_of.type_of = params[:course][:sites_attributes]["1"]["type"]
+    site_drop_of.save
+    @course.sites << site_drop_of
 
-    address
-    @site = @course.sites.build
-    type
+    if @course.save
+      (redirect_to course_path(@course))
+    else
+      render 'new'
+    end
+
 
     if params[:home]
       @course.save ? (redirect_to course_path(@course)) : (render 'pages/home')
@@ -39,7 +55,6 @@ class CoursesController < ApplicationController
   def preview
 
   end
-
 
   private
 
