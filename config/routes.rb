@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'payments/new'
-
-  get 'orders/show'
 
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations", sessions: "users/sessions"}
