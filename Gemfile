@@ -16,10 +16,17 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 gem 'omniauth-facebook'
 
 gem "geocoder"
+gem 'google_directions', '~> 0.1.6.2'
 
 gem 'activeadmin', github: 'activeadmin'
 

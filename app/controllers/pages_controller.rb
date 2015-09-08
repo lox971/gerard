@@ -7,6 +7,7 @@ def home
     redirect_to edit_customer_path(current_user)
   else
   end
-
 end
+
+
 end
