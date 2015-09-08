@@ -1,7 +1,6 @@
-
 <div class="text-center">
- <h2>Votre course</h2>
-  <p> lieu de prise en charge : <%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %> </p>
+  <h2>Votre course</h2>
+  <p> lieu de prise en charge : <%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %></p>
   <p> lieu de dépot : <%= @course.sites.select { |site| site.type_of == "drop_off" }.first.address %> </p>
 
   <h2>Prix total : <div id="price"></div></h2>

@@ -4,7 +4,6 @@ class MoversController < ApplicationController
     @mover = Mover.new
   end
 
-
   def create
     @mover = Mover.new(mover_params)
     @mover.user = current_user

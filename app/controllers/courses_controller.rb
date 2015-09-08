@@ -44,11 +44,8 @@ class CoursesController < ApplicationController
       render 'new'
     end
 
-
     if params[:home]
       @course.save ? (redirect_to course_path(@course)) : (render 'pages/home')
-    else
-      @course.save ? (redirect_to courses_path) : (render 'new')
     end
   end
 
@@ -74,6 +71,7 @@ class CoursesController < ApplicationController
       end
     end
   end
+
   def type
     params[:course][:sites_attributes]["1"].each do |key, value|
       if "address" == key
@@ -83,4 +81,5 @@ class CoursesController < ApplicationController
       end
     end
   end
+
 end

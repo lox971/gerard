@@ -11,12 +11,10 @@ class CustomersController < ApplicationController
     @customer = current_user.profile
   end
 
-
   def new
     @customer = Customer.new
     authorize @customer
   end
-
 
   def create
     @customer = Customer.new(customer_params)
