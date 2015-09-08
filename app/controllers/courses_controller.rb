@@ -1,14 +1,16 @@
 class CoursesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :preview
 
   def index
 
     if current_user.profile_id?
-    elsif current_user.profile_type == "customer" || "Customer"
+    elsif current_user.profile_type == "customer" || current_user.profile_type == "Customer"
       redirect_to new_customer_path
     else
       redirect_to new_mover_path
     end
   end
+
 
   def show
     @course = Course.find(params[:id])
@@ -43,12 +45,25 @@ class CoursesController < ApplicationController
       render 'new'
     end
 
+
+    if params[:home]
+      @course.save ? (redirect_to course_path(@course)) : (render 'pages/home')
+    else
+      @course.save ? (redirect_to courses_path) : (render 'new')
+    end
+  end
+
+  def preview
+
   end
 
   private
 
   def course_params
-    params.require(:course).permit(:mover_rating)
+    params.require(:course).permit(
+      :mover_rating,
+      :from
+    )
   end
 
   def address

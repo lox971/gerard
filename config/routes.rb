@@ -4,11 +4,13 @@ Rails.application.routes.draw do
 
   root to: 'courses#new'
 
-    resources :customers
-    resources :courses
-    resources :movers
-
-
+  resources :customers
+  resources :courses do
+    collection do
+      get 'preview'
+    end
+  end
+  resources :movers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
