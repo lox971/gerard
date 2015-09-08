@@ -46,8 +46,6 @@ class CoursesController < ApplicationController
 
     if params[:home]
       @course.save ? (redirect_to course_path(@course)) : (render 'pages/home')
-    # else
-    #   @course.save ? (redirect_to courses_path) : (render 'new')
     end
   end
 
