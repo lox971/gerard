@@ -22,6 +22,7 @@ gem "geocoder"
 gem 'activeadmin', github: 'activeadmin'
 gem 'pundit'
 gem 'money-rails'
+gem 'stripe', '~> 1.25.0'
 
 group :development, :test do
   gem 'binding_of_caller'
