@@ -4,7 +4,7 @@
 <%= simple_form_for(@customer) do |f| %>
   <%= f.error_notification %>
   <div class ="text-center">
-    <%= image_tag @customer.picture.url(:medium) %>
+    <%= image_tag @customer.picture.url(:medium), class: "img-rounded" %>
   </div>
 
 

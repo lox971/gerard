@@ -1,2 +1,53 @@
-<h1>page customer show</h1>
-<p> TODO </p>
+<div class = "text-center">
+  <div class="card">
+    <h1>Profil</h1>
+    <span class="card-bg"></span>
+    <span class="card-shadow"></span>
+    <span class="card-description"><%= @customer.first_name.capitalize %> needs Gerard...</span>
+    <span class="card-text">
+      <%= simple_form_for (@customer), class: "form-horizontal" do |f| %>
+        <span class="card-user">
+          <%= image_tag @customer.picture.url(:medium), class: "img-rounded",  style: "margin: 30px;" %>
+        </span>
+
+        <div class = "form-group">
+          <div class="col-xs-6 control-label">First-Name:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%= @customer.first_name.capitalize %></p>
+          </div>
+
+          <div class="col-xs-6 control-label">Last-Name:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%= @customer.last_name.capitalize %></p>
+          </div>
+
+          <div class="col-xs-6 control-label">Phone-Number:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%= @customer.phone_number %></p>
+          </div>
+
+          <div class="col-xs-6 control-label">Profile Created At:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%=@customer.created_at.day%>/
+            <%=@customer.created_at.month%>/
+            <%=@customer.created_at.year%>
+          </p>
+          </div>
+
+          <div class="col-xs-6 control-label">Last Update:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%=@customer.updated_at.day%>/
+            <%=@customer.updated_at.month%>/
+            <%=@customer.updated_at.year%>
+          </p>
+          </div>
+
+        </div>
+        <div class="banner-btn">
+          <%= link_to "Edit", edit_customer_path(@customer), class: "btn btn-warning" %>
+        </div>
+      <% end %>
+    </span>
+  </div>
+</div>
+

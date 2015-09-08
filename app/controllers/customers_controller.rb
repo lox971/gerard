@@ -8,7 +8,7 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @customer = current_user
+    @customer = current_user.profile
   end
 
 
