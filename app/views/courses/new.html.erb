@@ -34,13 +34,12 @@
 <!-- Custom JS code to bind to Autocomplete API -->
 <script type="text/javascript" src="autocomplete.js"></script>
 <% content_for(:after_js) do %>
-<script>
-  $('noEnterSubmit').keypress(function(e) {
-    if (e.keyCode == '13') {
-       e.preventDefault();
-
-     }
-  });​
-</script>
+  <script>
+    $('noEnterSubmit').keypress(function(e) {
+      if (e.keyCode == '13'){
+         e.preventDefault();
+       }
+    });​
+  </script>
 <% end %>
 

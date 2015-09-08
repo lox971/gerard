@@ -1,8 +1,10 @@
 
 <h1>Courses</h1>
+
 <ul>
   <% @courses.each do |course| %>
     <li><%= link_to course.customer, course_path(course) %></li>
   <% end %>
+
 </ul>
 

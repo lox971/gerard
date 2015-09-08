@@ -9,4 +9,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
       new_customer_path
     end
   end
+
 end
