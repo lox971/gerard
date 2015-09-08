@@ -18,12 +18,10 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 
 gem 'omniauth-facebook'
-
 gem "geocoder"
-
 gem 'activeadmin', github: 'activeadmin'
-
 gem 'pundit'
+gem 'money-rails'
 
 group :development, :test do
   gem 'binding_of_caller'
