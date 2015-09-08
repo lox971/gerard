@@ -25,11 +25,7 @@ end
 
 gem 'omniauth-facebook'
 gem "geocoder"
-<<<<<<< HEAD
-=======
 gem 'google_directions', '~> 0.1.6.2'
-
->>>>>>> master
 gem 'activeadmin', github: 'activeadmin'
 gem 'pundit'
 gem 'money-rails'
