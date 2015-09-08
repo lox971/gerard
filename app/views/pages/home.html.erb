@@ -40,7 +40,7 @@
 
           <%= link_to "Sign In", user_session_path, class: "btn btn-warning" %>
           <%= link_to "Sign Up", new_user_registration_path + "?customer", class: "btn btn-warning" %>
-          <%= link_to "Become a Gerard", new_user_registration_path + "?mover", class: "btn btn-warning" %>
+          <%= link_to "Become a Gerard", new_user_registration_path + "?mover", class: "btn btn-success" %>
         </div>
       </div>
     </div>
@@ -52,3 +52,14 @@
 
 <!-- Custom JS code to bind to Autocomplete API -->
 <script type="text/javascript" src="autocomplete.js"></script>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('input').keypress(function(e) {
+        if(e.keyCode == '13') {
+          e.preventDefault();
+        }
+      })
+    })
+  <% end %>
+<% end %>
