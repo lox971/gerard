@@ -24,13 +24,12 @@ source 'https://rails-assets.org' do
 end
 
 gem 'omniauth-facebook'
-
 gem "geocoder"
 gem 'google_directions', '~> 0.1.6.2'
-
 gem 'activeadmin', github: 'activeadmin'
-
 gem 'pundit'
+gem 'money-rails'
+gem 'stripe', '~> 1.25.0'
 
 group :development, :test do
   gem 'binding_of_caller'

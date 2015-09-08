@@ -1,3 +1,4 @@
+
 <div class="text-center">
  <h2>Votre course</h2>
   <p> lieu de prise en charge : <%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %> </p>
@@ -5,7 +6,26 @@
 
 <h2>Prix total : <div id="price"></div></h2>
 
+<h1>bienvenue dans la course</h1>
+<h1>Course Details</h1>
+<p>Amount: <%= humanized_money_with_symbol(@course.price) %></p>
+>>>>>>> 6d3ed59b7e4c728000a104664eadf84b4dfc1eed
 
+<%= form_tag orders_path do %>
+  <%= hidden_field_tag 'course_id', @course.id %>
+  <%= submit_tag 'Purchase' %>
+<% end %>
+
+<div class="text-center">
+  <h1>Votre Course</h1>
+  <p>
+    lieu de prise en charge : <%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %>
+  </p>
+  <p>
+    lieu de dépot : <%= @course.sites.select { |site| site.type_of == "drop_off" }.first.address %>
+  </p>
+
+  <h2>Prix total : <div id="price"></div></h2>
   <h3>Détails du prix</h3>
 
   <div>Frais de base 39€</div>
@@ -16,10 +36,6 @@
   <div id="duration"></div>
   <div id="distancevalue"></div>
   <div id="durationvalue"></div>
-
-
-
-
 </div>
 
 
@@ -51,5 +67,3 @@
     })
   <% end %>
 <% end %>
-
-
