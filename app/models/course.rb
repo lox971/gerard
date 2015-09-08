@@ -7,7 +7,7 @@ class Course < ActiveRecord::Base
   # after_validation :geocode, if: :pick_up_address_changed?
   monetize :price_cents
 
-  def order
-    Order.find_by(course_sku: sku)
-  end
+  # def order
+  #   Order.find_by(course_sku: sku)
+  # end
 end

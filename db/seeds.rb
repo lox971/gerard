@@ -6,6 +6,3 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Course.create!(sku: 'jean-mimi', price: 10)
-Course.create!(sku: 'octocat',  price: 40)
-Course.create!(sku: '1234567',  price: 50)
