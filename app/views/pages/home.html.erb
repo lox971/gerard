@@ -21,17 +21,19 @@
         <div class='form-home'>
           <%= simple_form_for @course, url: preview_courses_path, method: 'get' do |f| %>
 
-            <%= f.fields_for :sites do |ff| %>
-              <%= ff.input :address, placeholder: "Put a pick up address", label: false %>
-              <%= ff.hidden_field :type, value: "pick_up" %>
 
               <%= f.fields_for :sites do |ff| %>
-                <%= ff.input :address, placeholder: "Put a drop off address",label: false %>
-                <%= ff.hidden_field :type, value: "drop_off" %>
-                <%= ff.hidden_field :from, value: "home" %>
-                <br>
-                <%= f.button :submit, "Estimate", class: "btn btn-primary" %>
-              <% end %>
+                <%= ff.input :address, placeholder: "Put a pick up address", label: false %>
+                <%= ff.hidden_field :type_of, value: "pick_up" %>
+
+                <%= f.fields_for :sites do |ff| %>
+                  <%= ff.input :address, placeholder: "Put a drop off address",label: false %>
+                  <%= ff.hidden_field :type_of, value: "drop_off" %>
+                  <%= ff.hidden_field :from, value: "home" %>
+              <br>
+                  <%= f.button :submit, "Estimate", class: "btn btn-primary" %>
+                <% end %>
+
               <% end %>
           <% end %>
         </div>
