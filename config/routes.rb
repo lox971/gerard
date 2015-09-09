@@ -14,7 +14,12 @@ Rails.application.routes.draw do
       get 'preview'
     end
   end
-  resources :movers
+  resources :movers do
+    collection do
+      get 'confirmation'
+    end
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

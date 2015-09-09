@@ -7,8 +7,9 @@ class MoversController < ApplicationController
   def create
     @mover = Mover.new(mover_params)
     @mover.user = current_user
+    @mover.status = false
     if @mover.save
-      redirect_to courses_path
+      redirect_to confirmation_movers_path
     else
       render :new
     end
@@ -25,13 +26,17 @@ class MoversController < ApplicationController
   end
 
   def show
-    @move = current_user
+    @mover = current_user
+  end
+
+  def confirmation
+
   end
 
   private
 
   def mover_params
-    params.require(:mover).permit(:first_name, :last_name, :phone_number, :pictures)
+    params.require(:mover).permit(:first_name, :last_name, :phone_number, :pictures, :status)
   end
 
 end
