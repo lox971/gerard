@@ -25,36 +25,29 @@ class CoursesController < ApplicationController
     @course.sites.build
   end
 
-
   def create
-    @course = Course.create()
-    site_pick_up = Site.new
-    site_pick_up.address = params[:course][:sites_attributes]["0"]["address"]
-    site_pick_up.type_of = params[:course][:sites_attributes]["0"]["type"]
-    site_pick_up.save
-    @course.sites << site_pick_up
-    site_drop_of = Site.new
-    site_drop_of.address = params[:course][:sites_attributes]["1"]["address"]
-    site_drop_of.type_of = params[:course][:sites_attributes]["1"]["type"]
-    site_drop_of.save
-    @course.sku = "sku" + site_pick_up.id.to_s + "to" + site_drop_of.id.to_s
-    @course.sites << site_drop_of
+    @course = Course.create(course_params)
+    @course.customer_id = current_user.id
+    @course.sku = "course_" + @course.id.to_s
 
     # Set kms / time / price using Google API
     @course.compute_infos
 
     if @course.save
-      (redirect_to course_path(@course))
+      redirect_to course_path(@course)
     else
       render 'new'
-    end
-
-    if params[:home]
-      @course.save ? (redirect_to course_path(@course)) : (render 'pages/home')
     end
   end
 
   def preview
+    @course = Course.create(course_params)
+    @course.sku = "course_" + @course.id.to_s
+
+    # Set kms / time / price using Google API
+    @course.compute_infos
+
+    redirect_to root_path unless @course.save
   end
 
   private
@@ -62,28 +55,9 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(
       :mover_rating,
-      :from
+      :from,
+      sites_attributes: [ :address, :type_of ]
     )
-  end
-
-  def address
-    params[:course][:sites_attributes]["0"].each do |key, value|
-      if "address" == key
-        @site.address = value
-      else
-        @site.type_of = value
-      end
-    end
-  end
-
-  def type
-    params[:course][:sites_attributes]["1"].each do |key, value|
-      if "address" == key
-        @site.address = value
-      else
-        @site.type_of = value
-      end
-    end
   end
 
 end
