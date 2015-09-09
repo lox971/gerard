@@ -1,51 +1,50 @@
 <div class="banner text-center">
+
   <div class="banner-background-shadow"> </div>
-    <div class="banner-content">
-      <div class="col-sm-6 col-sm-offset-3">
-        <h1>Gerard</h1>
+  <div class="banner-content">
+    <div class="banner-btn">
+      <%= link_to "Sign In", user_session_path %>
+      <%= link_to "Sign Up", new_user_registration_path + "?customer" %>
+      <%= link_to "Become a Gerard", new_user_registration_path + "?mover", class: "btn btn-success" %>
+    </div>
+    <div class="col-sm-6 col-sm-offset-3">
 
-          <section class="wrapper">
-            <h2 class="sentence">Move your
-              <div class="slidingVertical">
-                <span>couch</span>
-                <span>fridge</span>
-                <span>shelves</span>
-                <span>boxes</span>
-                <span>washer</span>
-              </div>
-            </h2>
-          </section>
+      <h1>Gerard</h1>
 
-        <br>
+      <section class="wrapper">
+        <h2 class="sentence">Move your
+          <div class="slidingVertical">
+            <span>couch</span>
+            <span>fridge</span>
+            <span>shelves</span>
+            <span>boxes</span>
+            <span>washer</span>
+          </div>
+        </h2>
+      </section>
 
-        <div class='form-home'>
-          <%= simple_form_for @course, url: preview_courses_path, method: 'get' do |f| %>
+      <br>
 
+      <div class='form-home'>
+        <%= simple_form_for @course, url: preview_courses_path, method: 'get' do |f| %>
 
-              <%= f.fields_for :sites do |ff| %>
-                <%= ff.input :address, placeholder: "Put a pick up address", label: false %>
-                <%= ff.hidden_field :type_of, value: "pick_up" %>
+          <%= f.fields_for :sites do |ff| %>
+            <%= ff.input :address, placeholder: "Put a pick up address", label: false %>
+            <%= ff.hidden_field :type_of, value: "pick_up" %>
 
-                <%= f.fields_for :sites do |ff| %>
-                  <%= ff.input :address, placeholder: "Put a drop off address",label: false %>
-                  <%= ff.hidden_field :type_of, value: "drop_off" %>
-                  <%= ff.hidden_field :from, value: "home" %>
-              <br>
-                  <%= f.button :submit, "Estimate", class: "btn btn-primary" %>
-                <% end %>
-
-              <% end %>
+            <%= f.fields_for :sites do |ff| %>
+              <%= ff.input :address, placeholder: "Put a drop off address",label: false %>
+              <%= ff.hidden_field :type_of, value: "drop_off" %>
+              <%= ff.hidden_field :from, value: "home" %>
+            <br>
+              <%= f.button :submit, "Estimate", class: "btn btn-primary" %>
+            <% end %>
           <% end %>
-        </div>
 
-        <div class="banner-btn">
-
-          <%= link_to "Sign In", user_session_path, class: "btn btn-warning" %>
-          <%= link_to "Sign Up", new_user_registration_path + "?customer", class: "btn btn-warning" %>
-          <%= link_to "Become a Gerard", new_user_registration_path + "?mover", class: "btn btn-success" %>
-        </div>
+        <% end %>
       </div>
     </div>
+  </div>
 </div>
 
 <!-- Include Google Maps JS API -->
