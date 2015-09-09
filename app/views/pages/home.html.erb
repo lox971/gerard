@@ -1,50 +1,41 @@
 <div class="banner text-center">
-
-  <div class="banner-background-shadow"> </div>
-  <div class="banner-content">
-    <div class="banner-btn">
-      <%= link_to "Sign In", user_session_path %>
-      <%= link_to "Sign Up", new_user_registration_path + "?customer" %>
-      <%= link_to "Become a Gerard", new_user_registration_path + "?mover", class: "btn btn-success" %>
-    </div>
-    <div class="col-sm-6 col-sm-offset-3">
-
-      <h1>Gerard</h1>
-
-      <section class="wrapper">
-        <h2 class="sentence">Move your
-          <div class="slidingVertical">
-            <span>couch</span>
-            <span>fridge</span>
-            <span>shelves</span>
-            <span>boxes</span>
-            <span>washer</span>
-          </div>
-        </h2>
-      </section>
-
-      <br>
-
-      <div class='form-home'>
-        <%= simple_form_for @course, url: preview_courses_path, method: 'get' do |f| %>
-
-          <%= f.fields_for :sites do |ff| %>
-            <%= ff.input :address, placeholder: "Put a pick up address", label: false %>
-            <%= ff.hidden_field :type_of, value: "pick_up" %>
-
-            <%= f.fields_for :sites do |ff| %>
-              <%= ff.input :address, placeholder: "Put a drop off address",label: false %>
-              <%= ff.hidden_field :type_of, value: "drop_off" %>
-              <%= ff.hidden_field :from, value: "home" %>
-            <br>
-              <%= f.button :submit, "Estimate", class: "btn btn-primary" %>
-            <% end %>
-          <% end %>
-
-        <% end %>
-      </div>
-    </div>
+  <div class="top-right hidden-sm hidden-md hidden-lg">
+    <%= link_to "Sign In", user_session_path, class: "btn btn-warning" %>
+    <%= link_to "New ?", new_user_registration_path + "?customer", class: "btn btn-warning" %>
+    <%= link_to "Become Gerard", new_user_registration_path + "?mover", class: "btn btn-success" %>
   </div>
+
+  <div class="wrapper">
+    <h1>Gerard,</h1>
+      <h2 class="slidingVertical">move your
+        <span>wardrobe</span>
+        <span>fridge</span>
+        <span>sofa</span>
+        <span>boxes</span>
+        <span>washer</span>
+
+      </h2>
+  </div>
+
+  <div class='form-home hidden-sm hidden-md hidden-lg'>
+    <%= simple_form_for @course, url: preview_courses_path, method: 'get' do |f| %>
+
+      <%= f.fields_for :sites do |ff| %>
+        <%= ff.input :address, placeholder: "Put a pick up address", label: false %>
+        <%= ff.hidden_field :type_of, value: "pick_up" %>
+
+        <%= f.fields_for :sites do |ff| %>
+          <%= ff.input :address, placeholder: "Put a drop off address",label: false %>
+          <%= ff.hidden_field :type_of, value: "drop_off" %>
+          <%= ff.hidden_field :from, value: "home" %>
+        <br>
+          <%= f.button :submit, "Estimate", class: "btn-home btn btn-primary" %>
+        <% end %>
+      <% end %>
+
+    <% end %>
+  </div>
+
 </div>
 
 <!-- Include Google Maps JS API -->
