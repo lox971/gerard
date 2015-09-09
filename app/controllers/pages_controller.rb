@@ -7,7 +7,8 @@ class PagesController < ApplicationController
     @course.sites.build
     if current_user && current_user.provider == "facebook"
       redirect_to new_course_path
-    else
+    elsif current_user && current_user.profile_type == "Mover"
+      redirect_to courses_path
     end
   end
 

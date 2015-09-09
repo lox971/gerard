@@ -1,10 +1,12 @@
-
 <h1>Courses</h1>
-
-<ul>
-  <% @courses.each do |course| %>
-    <li><%= link_to course.customer, course_path(course) %></li>
-  <% end %>
-
-</ul>
-
+<div class = "text-center">
+  <ul style="list-style-type:none;">
+    <% @courses.each do |course| %>
+      <li><%= course.kms %> kilometers </li>
+      <li><%= course.time %> minutes </li>
+      <li><%= humanized_money_with_symbol(course.price) %></li>
+      <%= link_to 'Show', course_path(course), class: 'btn btn-primary' %>
+      <hr>
+    <% end %>
+  </ul>
+</div>
