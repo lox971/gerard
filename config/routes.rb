@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations", sessions: "users/sessions"}
 
   root to: 'pages#home'
 
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+  end
   resources :customers
   resources :courses do
     collection do

@@ -30,16 +30,17 @@
 
           <%= f.fields_for :sites do |ff| %>
             <%= ff.input :address, placeholder: "Put a pick up address", label: false %>
-            <%= ff.hidden_field :type, value: "pick_up" %>
+            <%= ff.hidden_field :type_of, value: "pick_up" %>
 
             <%= f.fields_for :sites do |ff| %>
               <%= ff.input :address, placeholder: "Put a drop off address",label: false %>
-              <%= ff.hidden_field :type, value: "drop_off" %>
+              <%= ff.hidden_field :type_of, value: "drop_off" %>
               <%= ff.hidden_field :from, value: "home" %>
-              <br>
+            <br>
               <%= f.button :submit, "Estimate", class: "btn btn-primary" %>
             <% end %>
-            <% end %>
+          <% end %>
+
         <% end %>
       </div>
     </div>

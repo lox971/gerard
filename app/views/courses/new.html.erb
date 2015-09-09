@@ -10,12 +10,12 @@
 
         <%= f.fields_for :sites do |ff| %>
           <%= ff.input :address, placeholder: "Put a pick up address" %>
-          <%= ff.hidden_field :type, value: "pick_up" %>
+          <%= ff.hidden_field :type_of, value: "pick_up" %>
 
 
           <%= f.fields_for :sites do |ff| %>
             <%= ff.input :address, placeholder: "Put a drop off address" %>
-            <%= ff.hidden_field :type, value: "drop_off" %>
+            <%= ff.hidden_field :type_of, value: "drop_off" %>
 
           <%= f.button :submit, "Submit", class: "btn btn-primary " %>
 
@@ -34,6 +34,15 @@
 <!-- Custom JS code to bind to Autocomplete API -->
 <script type="text/javascript" src="autocomplete.js"></script>
 <% content_for(:after_js) do %>
+
+  <script>
+    $('noEnterSubmit').keypress(function(e) {
+      if (e.keyCode == '13'){
+         e.preventDefault();
+       }
+    });​
+  </script>
+
   <%= javascript_tag do %>
     $(document).ready(function() {
       $('input').keypress(function(e) {
@@ -43,5 +52,6 @@
       })
     })
   <% end %>
+
 <% end %>
 
