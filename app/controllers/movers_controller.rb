@@ -9,7 +9,7 @@ class MoversController < ApplicationController
     @mover.user = current_user
     @mover.status = false
     if @mover.save
-      redirect_to courses_path
+      redirect_to confirmation_movers_path
     else
       render :new
     end
@@ -26,7 +26,11 @@ class MoversController < ApplicationController
   end
 
   def show
-    @move = current_user
+    @mover = current_user
+  end
+
+  def confirmation
+
   end
 
   private

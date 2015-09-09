@@ -14,6 +14,6 @@ ActiveAdmin.register Mover do
   # end
 
   permit_params :last_name, :phone_number, :driving_license_number, :identification_document_number,
-    :created_at, :updated_at
+    :created_at, :updated_at, :status
 
 end

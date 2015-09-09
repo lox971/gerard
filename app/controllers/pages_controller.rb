@@ -8,7 +8,12 @@ class PagesController < ApplicationController
     if current_user && current_user.provider == "facebook"
       redirect_to new_course_path
     elsif current_user && current_user.profile_type == "Mover"
-      redirect_to courses_path
+      current_mover = Mover.find(current_user.profile_id)
+      if current_mover.status == true
+        redirect_to courses_path
+      else
+        redirect_to confirmation_movers_path
+      end
     end
   end
 
