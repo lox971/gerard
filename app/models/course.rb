@@ -7,4 +7,12 @@ class Course < ActiveRecord::Base
   # after_validation :geocode, if: :pick_up_address_changed?
   monetize :price_cents
 
+  def compute_infos
+    pickup_address = self.sites.where(type_of: "pick_up").first.address
+    drop_address = self.sites.where(type_of: "drop_off").first.address
+    directions = GoogleDirections.new(pickup_address, drop_address)
+    self.time = directions.drive_time_in_minutes
+    self.kms = directions.distance_in_miles.fdiv(1.6)
+    self.price = 10 # TODO: price calculus
+  end
 end

@@ -13,9 +13,10 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    # TODO CALCUL DU PRIX SECURISE
     @markers = Gmaps4rails.build_markers(@course) do |course, marker|
-      marker.lat course.sites.first.latitude
-      marker.lng course.sites.first.longitude
+      marker.lat @course.sites.first.latitude
+      marker.lng @course.sites.first.longitude
     end
   end
 
@@ -38,6 +39,9 @@ class CoursesController < ApplicationController
     site_drop_of.save
     @course.sites << site_drop_of
 
+    # Set kms / time / price using Google API
+    @course.compute_infos
+
     if @course.save
       (redirect_to course_path(@course))
     else
@@ -50,7 +54,6 @@ class CoursesController < ApplicationController
   end
 
   def preview
-
   end
 
   private
