@@ -36,6 +36,7 @@ class CoursesController < ApplicationController
     site_drop_of.address = params[:course][:sites_attributes]["1"]["address"]
     site_drop_of.type_of = params[:course][:sites_attributes]["1"]["type"]
     site_drop_of.save
+    @course.sku = "sku" + site_pick_up.id.to_s + "to" + site_drop_of.id.to_s
     @course.sites << site_drop_of
 
     if @course.save

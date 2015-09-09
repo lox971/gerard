@@ -19,6 +19,7 @@
 <p>Amount: <%= humanized_money_with_symbol(@course.price) %></p>
 
 <%= form_tag orders_path do %>
+  <%= hidden_field_tag 'amount' %>
   <%= hidden_field_tag 'course_id', @course.id %>
   <%= submit_tag 'Purchase' %>
 <% end %>
@@ -48,6 +49,8 @@
         $('#distancevalue').text(distancevalue)
         $('#durationvalue').text(durationvalue)
         $('#price').text(price)
+        $('#amount').val(price)
+
       })
     })
   <% end %>
