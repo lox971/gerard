@@ -20,23 +20,35 @@
 
         <div class='form-home'>
           <%= simple_form_for @course, url: preview_courses_path, method: 'get' do |f| %>
+          <div>
 
-            <%= f.fields_for :sites do |ff| %>
-              <%= ff.input :address, placeholder: "Put a pick up address", label: false %>
-              <%= ff.hidden_field :type, value: "pick_up" %>
 
               <%= f.fields_for :sites do |ff| %>
-                <%= ff.input :address, placeholder: "Put a drop off address",label: false %>
-                <%= ff.hidden_field :type, value: "drop_off" %>
-                <%= ff.hidden_field :from, value: "home" %>
-                <br>
-                <%= f.button :submit, "Estimate", class: "btn btn-primary" %>
+                <%= ff.input :address, placeholder: "Put a pick up address", label: false %>
+                <%= ff.hidden_field :type, value: "pick_up" %>
+
+                <%= f.fields_for :sites do |ff| %>
+                  <%= ff.input :address, placeholder: "Put a drop off address",label: false %>
+                  <%= ff.hidden_field :type, value: "drop_off" %>
+                  <%= ff.hidden_field :from, value: "home" %>
+              <br>
+                  <%= f.button :submit, "Estimate", class: "btn btn-primary" %>
+                <% end %>
               <% end %>
-              <% end %>
+            </div>
+          </div>
+
+
+
           <% end %>
         </div>
 
         <div class="banner-btn">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#estimate">Small modal</button>
+
+          <div class="modal fade"id="estimate">
+                ...
+          </div>
 
           <%= link_to "Sign In", user_session_path, class: "btn btn-warning" %>
           <%= link_to "Sign Up", new_user_registration_path + "?customer", class: "btn btn-warning" %>
