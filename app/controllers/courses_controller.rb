@@ -56,6 +56,8 @@ class CoursesController < ApplicationController
     params.require(:course).permit(
       :mover_rating,
       :from,
+      :picture,
+      :bucket,
       sites_attributes: [ :address, :type_of ]
     )
   end
