@@ -5,11 +5,9 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :orders, only: [:show, :create] do
-    resources :payments, only: [:new, :create]
-  end
   resources :customers
   resources :courses do
+    resources :payments, only: [:new, :create]
     collection do
       get 'preview'
     end

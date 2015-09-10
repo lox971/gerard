@@ -6,13 +6,11 @@
   <h2>Prix total : <div id="price"></div></h2>
   <h3>Détails du prix</h3>
 
-  <div>Frais de base 39€</div>
-
   <div>Travel </div>
 
   <div id="distance"><%= @course.kms %> kms</div>
   <div id="duration"><%= @course.time %> minutes</div>
   <div id="distancevalue"><%= humanized_money_with_symbol(@course.price) %></div>
 
-  <%= link_to 'Purchase', new_user_session_path(pending_course_id: @course.id), class: "btn btn-primary"%>
+  <%= link_to 'Continue', new_user_session_path(pending_course_id: @course.id), class: "btn btn-primary"%>
 </div>
