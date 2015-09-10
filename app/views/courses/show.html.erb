@@ -1,53 +1,80 @@
-<div class="text-center">
-  <h2>Votre course</h2>
-  <p> lieu de prise en charge : <%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %></p>
-  <p> lieu de dépot : <%= @course.sites.select { |site| site.type_of == "drop_off" }.first.address %> </p>
-  <h3>Détails du prix</h3>
+<% if current_user.profile_type == "Customer" || current_user.profile_type == "customer" %>
+  <div class="course-wrapper">
+    <h2 class='course-item-section'>Votre course</h2>
+    <div class="course-item-container">
+      <div class="course-item">
+        <div class="course-distance">
+          <div class="course-distance-item">
+            <i class='mdi mdi-truck'></i>
+            <%= @course.kms %> kms
+          </div>
+          <div class="course-distance-item">
+            <i class='mdi mdi-clock-fast'></i> <%= @course.time %> minutes
+          </div>
+        </div>
+        <div class="course-pickup">
+          <i class='mdi mdi-flag-outline'></i> <%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %>
+        </div>
+        <div class="course-dropoff">
+          <i class='mdi mdi-flag-checkered'></i> <%= @course.sites.select { |site| site.type_of == "drop_off" }.first.address %>
+        </div>
+        <div class="course-action">
+          <div class="course-price">
+            <%= humanized_money_with_symbol(@course.price) %>
+          </div>
+          <div class="course-action-item">
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="Reference n°<%= @course.sku %>"
+                data-amount="<%= @course.price_cents %>"
+                data-email = "<%= current_user.email %>"
+                data-currency="EUR">
+              </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+    <div class="course-wrapper">
+      <h2 class='course-item-section'>Description</h2>
+      <div class="course-item-container">
+        <div class="course-item">
+          <div class="course-distance">
+            <div class="course-distance-item">
+              <i class='mdi mdi-truck'></i>
+              <%= @course.kms %> kms
+            </div>
+            <div class="course-distance-item">
+              <i class='mdi mdi-clock-fast'></i> <%= @course.time %> minutes
+            </div>
+          </div>
+          <div class="course-pickup">
+            <i class='mdi mdi-flag-outline'></i> <%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %>
+          </div>
+          <div class="course-dropoff">
+            <i class='mdi mdi-flag-checkered'></i> <%= @course.sites.select { |site| site.type_of == "drop_off" }.first.address %>
+          </div>
+          <hr>
+          <div class = "course-pickup">
+            <i class= 'mdi mdi-account' ></i>
+            <%= @course.customer.first_name.capitalize %>
+            <%= @course.customer.last_name.capitalize %>
+          </div>
+          <div class = "course-pickup">
+            <i class=  'mdi mdi-phone'></i>
+            <%= @course.customer.phone_number %>
+          </div>
 
-  <div>Frais de base 39€</div>
-
-  <div>Travel </div>
-
-  <div id="distance"><%= @course.kms %> kms</div>
-  <div id="duration"><%= @course.time %> minutes</div>
-  <div id="distancevalue">TOTAL: <%= humanized_money_with_symbol(@course.price) %></div>
-
-  <%= form_tag orders_path do %>
-    <%= hidden_field_tag 'course_id', @course.id %>
-    <%= submit_tag 'Purchase', class: "btn btn-primary" %>
-  <% end %>
-</div>
-
-
-<% if false %>
-
-  <%= content_for :after_js do %>
-    <%= javascript_tag do %>
-      $(document).ready(function() {
-        var service = new google.maps.DistanceMatrixService;
-        service.getDistanceMatrix({
-          origins: ['<%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %>'],
-          destinations: ['<%= @course.sites.select { |site| site.type_of == "drop_off" }.first.address %>'],
-          travelMode: google.maps.TravelMode.DRIVING,
-          unitSystem: google.maps.UnitSystem.METRIC,
-          durationInTraffic: true,
-          avoidHighways: false,
-          avoidTolls: false
-        }, function(data) {
-          var distance = data.rows["0"].elements["0"].distance.text
-          var duration = data.rows["0"].elements["0"].duration.text
-          var distancevalue = data.rows["0"].elements["0"].distance.value
-          var durationvalue = data.rows["0"].elements["0"].duration.value
-          var price1 = ((distancevalue/1000) * 2) + ((durationvalue/60) * 0.6)
-          var price = Math.ceil(price1) + 39
-          $('#distance').text(distance)
-          $('#duration').text(duration)
-          $('#distancevalue').text(distancevalue)
-          $('#durationvalue').text(durationvalue)
-          $('#price').text(price)
-        })
-      })
-    <% end %>
-  <% end %>
-
+          <div class="course-action">
+            <div class="course-price">
+              <%= humanized_money_with_symbol(@course.price) %>
+            </div>
+            <div class="course-action-item">
+              <%= link_to "GO!", mover_path(current_user), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 <% end %>

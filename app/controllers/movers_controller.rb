@@ -1,5 +1,10 @@
 class MoversController < ApplicationController
 
+
+  def show
+    @mover = current_user.profile
+  end
+
   def new
     @mover = Mover.new
   end
@@ -20,14 +25,14 @@ class MoversController < ApplicationController
   end
 
   def update
-    @mover = Mover.find(params[:id])
-    @mover.update
-    redirect_to show_mover_path(@mover)
+    @mover = current_user.profile
+    if @mover.update(mover_params)
+      redirect_to mover_path(@mover)
+    else
+      render :edit
+    end
   end
 
-  def show
-    @mover = current_user
-  end
 
   def confirmation
 
@@ -36,7 +41,8 @@ class MoversController < ApplicationController
   private
 
   def mover_params
-    params.require(:mover).permit(:first_name, :last_name, :phone_number, :pictures, :status)
+    params.require(:mover).permit(:first_name, :last_name, :phone_number,
+      :picture, :status )
   end
 
 end
