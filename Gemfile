@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "coffee-rails"
 gem "gmaps4rails"
+gem 'rails-assets-mdi'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
