@@ -27,6 +27,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.create(course_params)
+
     @course.customer_id = current_user.id
     @course.sku = "course_" + @course.id.to_s
     @course.status = "pending"
