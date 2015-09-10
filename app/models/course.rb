@@ -20,7 +20,7 @@ class Course < ActiveRecord::Base
     directions = GoogleDirections.new(pickup_address, drop_address)
     self.time = directions.drive_time_in_minutes
     self.kms = directions.distance_in_miles.fdiv(1.6)
-    self.price = 49 # TODO: price calculus
+    self.price = (49 + self.time * 0.6 + self.kms * 2)
 
 
   end
