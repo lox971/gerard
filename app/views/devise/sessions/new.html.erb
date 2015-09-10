@@ -1,18 +1,50 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h2 class = "text-center">Log in</h2>
 
+
+
+
+
+<div class="log-wrapper">
+  <div class="log-container">
+    <h1 class="log-title">Gerard</h1>
+    <h2 class="log-title-section">
+      Transporter facilement
+      vos objets volumineux
+    </h2>
+    <div>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <%= f.input :email, required: false, autofocus: true %>
-          <%= f.input :password, required: false %>
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+          <%= f.input :email, required: false, autofocus: true, placeholder: "Email", label: false, input_html: { class: "log-email" } %>
+            <%= f.input :password, required: false, placeholder: "Mot de passe", label: false, input_html: { class: "log-password" } %>
+          <%#= f.input :remember_me, label: "Se souvenir de moi", input_html: { class: "log-item" }, as: :boolean if devise_mapping.rememberable? %>
+          <%= f.button :submit, "Se connecter", class: "btn btn-primary btn-primary-log", input_html: { class: "log-action" } %>
       <% end %>
-
-      <%= render "devise/shared/links" %>
-
-
+    </div>
+    <div>
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <div class = "btn btn-fb">
+          <%= link_to "Se connecter avec facebook", omniauth_authorize_path(resource_name, provider)%>
+          </div>
+        <% end -%>
+        <br>
+      <% end -%>
+    </div>
+    <div class="btn btn-forgot-password">
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%= link_to "Mot de passe oublié ?", new_password_path(resource_name) %><br />
+      <% end -%>
+    </div>
+    <hr>
+    <div class="create-account">
+      <p class="text-center">Vous n'avez pas encore de compte ?</p>
+      <div class="btn btn-warning create-account-btn">
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= link_to "Créez un nouveau compte", new_user_registration_path + "?customer" %><br />
+        <% end -%>
+      </div>
+    </div>
+      <%#= render "devise/shared/links" %>
     </div>
   </div>
 </div>
+
+

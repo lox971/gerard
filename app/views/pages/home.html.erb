@@ -1,20 +1,18 @@
 <div class="banner text-center">
   <div class="top-right hidden-sm hidden-md hidden-lg">
-    <%= link_to "Sign In", user_session_path, class: "btn btn-warning" %>
-    <%= link_to "New ?", new_user_registration_path + "?customer", class: "btn btn-warning" %>
-    <%= link_to "Become Gerard", new_user_registration_path + "?mover", class: "btn btn-success" %>
+    <%= link_to "Se connecter", user_session_path, class: "btn btn-warning" %>
+    <%= link_to "Devenir Gerard", new_user_registration_path + "?mover", class: "btn btn-success" %>
   </div>
 
   <div class="wrapper">
     <h1>Gerard,</h1>
       <div class="slogan">
         <hr>
-        <h2 class="slidingVertical"><strong>move your</strong>
-        <span>wardrobe</span>
-        <span>fridge</span>
-        <span>sofa</span>
-        <span>boxes</span>
-        <span>washer</span>
+        <h2 class="slidingVertical"><strong>transporte tes</strong>
+        <span>armoires</span>
+        <span>frigos</span>
+        <span>sofas</span>
+        <span>cartons</span>
       </div>
       </h2>
   </div>
@@ -23,15 +21,15 @@
     <%= simple_form_for @course, url: preview_courses_path, method: 'get' do |f| %>
 
       <%= f.fields_for :sites do |ff| %>
-        <%= ff.input :address, placeholder: "Put a pick up address", label: false %>
+        <%= ff.input :address, placeholder: "Adresse de prise en charge", label: false %>
         <%= ff.hidden_field :type_of, value: "pick_up" %>
 
         <%= f.fields_for :sites do |ff| %>
-          <%= ff.input :address, placeholder: "Put a drop off address",label: false %>
+          <%= ff.input :address, placeholder: "Adresse de dépôt",label: false %>
           <%= ff.hidden_field :type_of, value: "drop_off" %>
           <%= ff.hidden_field :from, value: "home" %>
         <br>
-          <%= f.button :submit, "Estimate", class: "btn-home btn btn-primary" %>
+          <%= f.button :submit, "Estimation", class: "btn-home btn btn-primary" %>
         <% end %>
       <% end %>
 
