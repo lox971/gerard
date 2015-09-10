@@ -1,18 +1,30 @@
-<div class="text-center">
-  <h2>Votre course</h2>
-  <p> lieu de prise en charge : <%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %></p>
-  <p> lieu de dépot : <%= @course.sites.select { |site| site.type_of == "drop_off" }.first.address %> </p>
-
-  <h2>Prix total : <div id="price"></div></h2>
-  <h3>Détails du prix</h3>
-
-  <div>Frais de base 39€</div>
-
-  <div>Travel </div>
-
-  <div id="distance"><%= @course.kms %> kms</div>
-  <div id="duration"><%= @course.time %> minutes</div>
-  <div id="distancevalue"><%= humanized_money_with_symbol(@course.price) %></div>
-
-  <%= link_to 'Purchase', new_user_session_path(pending_course_id: @course.id), class: "btn btn-primary"%>
+<div class="course-wrapper">
+  <h2 class='course-item-section'>Votre course</h2>
+  <div class="course-item-container">
+    <div class="course-item">
+      <div class="course-distance">
+        <div class="course-distance-item">
+          <i class='mdi mdi-truck'></i>
+          <%= @course.kms %> kms
+        </div>
+        <div class="course-distance-item">
+          <i class='mdi mdi-clock-fast'></i> <%= @course.time %> minutes
+        </div>
+      </div>
+      <div class="course-pickup">
+        <i class='mdi mdi-flag-outline'></i> <%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %>
+      </div>
+      <div class="course-dropoff">
+        <i class='mdi mdi-flag-checkered'></i> <%= @course.sites.select { |site| site.type_of == "drop_off" }.first.address %>
+      </div>
+      <div class="course-action">
+        <div class="course-price">
+          <%= humanized_money_with_symbol(@course.price) %>
+        </div>
+        <div class="course-action-item">
+          <%= link_to 'Get it', new_user_session_path(pending_course_id: @course.id), class: "btn btn-primary"%>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

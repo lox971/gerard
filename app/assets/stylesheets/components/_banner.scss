@@ -1,7 +1,7 @@
 .banner {
   position: relative;
   background-size: cover;
-  background-image:url('https://images.unsplash.com/photo-1424393101579-527cca47bf3c?q=80&fm=jpg&s=106d9bcbffc2f5ac35aeca6b6597695c');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1424393101579-527cca47bf3c?q=80&fm=jpg&s=106d9bcbffc2f5ac35aeca6b6597695c");
   background-position: center;
   // color: rgba(50,50,50,1);
   height: 100vh;
@@ -15,11 +15,18 @@
     margin-bottom: 0px;
     font-weight: bold;
   }
-  h2{
+  h2 {
     font-size: 20px;
     text-align: right;
     margin-top: 11px;
+    position: relative;
+
+    strong {
+      font-weight: 300;
+      opacity: 0.8;
+    }
   }
+
   p {
     font-size: 18px;
     color: rgba(255, 255, 255, 1);
@@ -72,8 +79,23 @@
   width: 230px;
   margin-bottom: 30px;
 }
+
 .btn-home{
     padding: 8px 12px;
     font-size: 14px;
     margin-top: -60px;
+}
+
+
+.slogan {
+  display: flex;
+  align-items: center;
+
+  hr {
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.53);
+    margin: 0;
+    border: none;
+    width: 44px;
+  }
 }

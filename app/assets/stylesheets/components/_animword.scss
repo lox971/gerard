@@ -9,8 +9,9 @@ h1{
 /*Wrapper*/
 .wrapper{
   color: white;
-  margin-top: 100px;
-  margin-bottom: 270px;
+  padding-bottom: 50px;
+  position: relative;
+  left: -25px;
   &-baseline{
     color: white;
     text-align: right;
@@ -26,8 +27,10 @@ h1{
   animation: topToBottom 12.5s linear infinite 0s;
   -ms-animation: topToBottom 12.5s linear infinite 0s;
   -webkit-animation: topToBottom 12.5s linear infinite 0s;
-  color: #469AE0;
+  color: white;
+  font-weight: bold;
   opacity: 0;
+  top: 0;
   overflow: hidden;
   position: absolute;
 
@@ -35,32 +38,32 @@ h1{
   // padding-right:9px;
 }
 .slidingVertical span:nth-child(2){
-  animation-delay: 2.5s;
-  -ms-animation-delay: 2.5s;
-  -webkit-animation-delay: 2.5s;
+  animation-delay: 3.5s;
+  -ms-animation-delay: 3.5s;
+  -webkit-animation-delay: 3.5s;
   // background-color:brown;
-  padding-right:9px;
+  // padding-right:9px;
 }
 .slidingVertical span:nth-child(3){
-  animation-delay: 5s;
-  -ms-animation-delay: 5s;
-  -webkit-animation-delay: 5s;
+  animation-delay: 6s;
+  -ms-animation-delay: 6s;
+  -webkit-animation-delay: 6s;
   // background-color:limegreen;
-  padding-right:9px;
+  // padding-right:9px;
 }
 .slidingVertical span:nth-child(4){
-  animation-delay: 7.5s;
-  -ms-animation-delay: 7.5s;
-  -webkit-animation-delay: 7.5s;
+  animation-delay: 8.5s;
+  -ms-animation-delay: 8.5s;
+  -webkit-animation-delay: 8.5s;
   // background-color:lightskyblue;
-  padding-right:9px;
+  // padding-right:9px;
 }
 .slidingVertical span:nth-child(5){
-  animation-delay: 10s;
-  -ms-animation-delay: 10s;
-  -webkit-animation-delay: 10s;
+  animation-delay: 11s;
+  -ms-animation-delay: 11s;
+  -webkit-animation-delay: 11s;
   // background-color:coral;
-  padding-right:9px;
+  // padding-right:9px;
 }
 
 /*topToBottom Animation*/
