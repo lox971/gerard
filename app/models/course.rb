@@ -7,6 +7,12 @@ class Course < ActiveRecord::Base
   # after_validation :geocode, if: :pick_up_address_changed?
   monetize :price_cents
 
+  has_attached_file :picture,
+    styles: { medium: "300x300>", thumb: "100x100>" }
+
+  validates_attachment_content_type :picture,
+    content_type: /\Aimage\/.*\z/
+
   def compute_infos
 
     pickup_address = self.sites.where(type_of: "pick_up").first.address
