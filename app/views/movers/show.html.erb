@@ -1,0 +1,74 @@
+<div class = "text-center">
+  <div class="card">
+    <h1>Profil</h1>
+    <span class="card-bg"></span>
+    <span class="card-shadow"></span>
+    <span class="card-description"><%= @mover.first_name.capitalize %></span>
+    <span class="card-text">
+      <%= simple_form_for (@mover), class: "form-horizontal" do |f| %>
+        <span class="card-user">
+          <%= image_tag @mover.picture.url(:thumb), class: "img-rounded",  style: "margin: 30px;" %>
+        </span>
+
+        <div class = "form-group">
+          <div class="col-xs-6 control-label">First-Name:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%= @mover.first_name.capitalize %></p>
+          </div>
+
+          <div class="col-xs-6 control-label">Last-Name:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%= @mover.last_name.capitalize %></p>
+          </div>
+
+          <div class="col-xs-6 control-label">Phone-Number:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%= @mover.phone_number %></p>
+          </div>
+
+          <div class="col-xs-6 control-label">Profile Created At:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%=@mover.created_at.day%>/
+            <%=@mover.created_at.month%>/
+            <%=@mover.created_at.year%>
+          </p>
+          </div>
+
+          <div class="col-xs-6 control-label">Driving License:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%=@mover.driving_license_number%>
+          </p>
+          </div>
+
+          <div class="col-xs-6 control-label">ID Number:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%= @mover.identification_document_number %>
+          </p>
+          </div>
+
+          <div class="col-xs-6 control-label">Last Update:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%=@mover.updated_at.day%>/
+            <%=@mover.updated_at.month%>/
+            <%=@mover.updated_at.year%>
+          </p>
+          </div>
+
+          <div class="col-xs-6 control-label">Last Update:</div>
+          <div class="col-xs-6">
+          <p class="form-control-static"><%=@mover.updated_at.day%>/
+            <%=@mover.updated_at.month%>/
+            <%=@mover.updated_at.year%>
+          </p>
+          </div>
+
+        </div>
+        <div class="banner-btn">
+          <%= link_to "Edit", edit_mover_path(@mover), class: "btn btn-warning" %>
+        </div>
+      <% end %>
+    </span>
+  </div>
+</div>
+
+

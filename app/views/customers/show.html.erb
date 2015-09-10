@@ -7,7 +7,7 @@
     <span class="card-text">
       <%= simple_form_for (@customer), class: "form-horizontal" do |f| %>
         <span class="card-user">
-          <%= image_tag @customer.picture.url(:medium), class: "img-rounded",  style: "margin: 30px;" %>
+          <%= image_tag @customer.picture.url(:thumb), class: "img-rounded",  style: "margin: 30px;" %>
         </span>
 
         <div class = "form-group">
