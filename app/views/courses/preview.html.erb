@@ -22,7 +22,7 @@
           <%= humanized_money_with_symbol(@course.price) %>
         </div>
         <div class="course-action-item">
-          <%= link_to 'Get it', new_user_session_path(pending_course_id: @course.id), class: "btn btn-primary"%>
+          <%= link_to 'Continuer', new_user_session_path(pending_course_id: @course.id), class: "btn btn-primary"%>
         </div>
       </div>
     </div>

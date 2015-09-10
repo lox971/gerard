@@ -13,6 +13,7 @@ ActiveAdmin.register Course do
   #   permitted
   # end
 
+
   permit_params :mover_id, :customer_id, :accepted_at, :course_start_time, :travel_start_time,
     :travel_end_time, :course_end_time, :mover_rating, :created_at, :updated_at
 

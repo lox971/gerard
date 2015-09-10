@@ -23,5 +23,6 @@ class Course < ActiveRecord::Base
     self.price = (40 + self.time * 0.6 + self.kms * 2) # TODO: price calculus
 
 
+
   end
 end
