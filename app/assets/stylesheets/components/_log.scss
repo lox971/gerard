@@ -1,0 +1,132 @@
+.log-wrapper {
+  height: 100vh;
+  padding-top: 40px;
+  display: flex;
+  align-items: center;
+  min-height: 500px;
+  flex-flow: column;
+  justify-content: center;
+  background: #F4F4F4;
+}
+.log-item {
+  background: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  border-radius: 3px;
+
+  &-container { padding: 0px }
+}
+.log-title { // Gerard
+  color: black;
+  margin: 0px;
+  padding-bottom: 10px;
+
+  &-section { // text
+    font-size:13px;
+    margin: 0px;
+    padding-bottom: 30px;
+  }
+}
+.log-container {
+  background: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  border-radius: 3px;
+  padding: 20px;
+}
+
+.log-email {
+  width: 100%;
+  margin: 0px;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #CCCCCC;
+  }
+}
+
+.log-password {
+  width: 100%;
+  margin: 0px;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #CCCCCC;
+  }
+}
+
+.form-group {
+  margin: -1px;
+}
+
+.btn-primary-log {
+  width: 100%;
+  font-size: 10px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  height: 40px;
+}
+
+.btn-fb {
+  width: 100%;
+  font-size: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  color: white;
+  background-color: #3A5898;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a {
+    color: white;
+    text-decoration: none
+  }
+}
+
+
+.btn-forgot-password {
+  width: 100%;
+  // background-color: #7B6571;
+  font-size: 10px;
+  margin-bottom: 0px;
+  a {
+    color: black;
+    text-decoration: none
+  }
+}
+
+
+.create-account {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin-top: 10px;
+  padding-top: 15px;
+  p {
+    font-size: 13px;
+    justify-content: center;
+  }
+  &-btn {
+    margin-top: 30px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F4F4F4;
+    border-color: #F4F4F4;
+    &:hover {
+      background: #F4F4F4;
+      border-color: #F4F4F4;
+    }
+    a {
+      color: black;
+      text-decoration: none
+    }
+  }
+
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: -35px;
+}
