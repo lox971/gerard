@@ -1,53 +1,38 @@
-<div class="text-center">
-  <h2>Votre course</h2>
-  <p> lieu de prise en charge : <%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %></p>
-  <p> lieu de dépot : <%= @course.sites.select { |site| site.type_of == "drop_off" }.first.address %> </p>
-  <h3>Détails du prix</h3>
+<div class = "text-center card">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <h2>Votre course</h2>
+        <p> lieu de prise en charge : <%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %>
+        </p>
+        <p> lieu de dépot : <%= @course.sites.select { |site| site.type_of == "drop_off" }.first.address %>
+        </p>
+        <h3>Détails du prix</h3>
 
-  <div>Frais de base 39€</div>
+        <div>Travel </div>
 
-  <div>Travel </div>
+        <div id="distance"><%= @course.kms %> kms</div>
+        <div id="duration"><%= @course.time %> minutes</div>
+        <div id="distancevalue">TOTAL: <%= humanized_money_with_symbol(@course.price) %></div>
 
-  <div id="distance"><%= @course.kms %> kms</div>
-  <div id="duration"><%= @course.time %> minutes</div>
-  <div id="distancevalue">TOTAL: <%= humanized_money_with_symbol(@course.price) %></div>
+        <%= form_tag course_payments_path(@course) do %>
+            <h2 style="color:black;">Purchase of course <%= @course.sku %></h2>
+            <article>
+              <label class="amount">
+                <span>Amount: <%= humanized_money_with_symbol(@course.price) %></span>
+              </label>
+            </article>
 
-  <%= form_tag orders_path do %>
-    <%= hidden_field_tag 'course_id', @course.id %>
-    <%= submit_tag 'Purchase', class: "btn btn-primary" %>
-  <% end %>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Reference n°<%= @course.sku %>"
+              data-amount="<%= @course.price_cents %>"
+              data-email = "<%= current_user.email %>"
+              data-currency="EUR">
+            </script>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-<% if false %>
-
-  <%= content_for :after_js do %>
-    <%= javascript_tag do %>
-      $(document).ready(function() {
-        var service = new google.maps.DistanceMatrixService;
-        service.getDistanceMatrix({
-          origins: ['<%= @course.sites.select { |site| site.type_of == "pick_up" }.first.address %>'],
-          destinations: ['<%= @course.sites.select { |site| site.type_of == "drop_off" }.first.address %>'],
-          travelMode: google.maps.TravelMode.DRIVING,
-          unitSystem: google.maps.UnitSystem.METRIC,
-          durationInTraffic: true,
-          avoidHighways: false,
-          avoidTolls: false
-        }, function(data) {
-          var distance = data.rows["0"].elements["0"].distance.text
-          var duration = data.rows["0"].elements["0"].duration.text
-          var distancevalue = data.rows["0"].elements["0"].distance.value
-          var durationvalue = data.rows["0"].elements["0"].duration.value
-          var price1 = ((distancevalue/1000) * 2) + ((durationvalue/60) * 0.6)
-          var price = Math.ceil(price1) + 39
-          $('#distance').text(distance)
-          $('#duration').text(duration)
-          $('#distancevalue').text(distancevalue)
-          $('#durationvalue').text(durationvalue)
-          $('#price').text(price)
-        })
-      })
-    <% end %>
-  <% end %>
-
-<% end %>
