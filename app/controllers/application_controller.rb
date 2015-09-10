@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
     if session[:pending_course_id] && current_user
       course = Course.find(session[:pending_course_id])
       course.customer_id = current_user.id
+      raise
       course.save
       session[:pending_course_id] = nil
       redirect_to course_path(course)
