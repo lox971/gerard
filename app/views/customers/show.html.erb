@@ -5,7 +5,7 @@
     <span class="card-shadow"></span>
     <span class="card-description"><%= @customer.first_name.capitalize %> needs Gerard...</span>
     <span class="card-text">
-      <%= simple_form_for (@customer), class: "form-horizontal" do |f| %>
+      <%= simple_form_for (@customer), url: customers_path, class: "form-horizontal" do |f| %>
         <span class="card-user">
           <%= image_tag @customer.picture.url(:thumb), class: "img-rounded",  style: "margin: 30px;" %>
         </span>
@@ -44,7 +44,7 @@
 
         </div>
         <div class="banner-btn">
-          <%= link_to "Edit", edit_customer_path(@customer), class: "btn btn-warning" %>
+          <%= link_to "Edit", edit_customers_path(@customer), class: "btn btn-warning" %>
         </div>
       <% end %>
     </span>

@@ -12,12 +12,15 @@
         <%= f.input :email, required: true, autofocus: true, placeholder: "Email", label: false, input_html: { class: "log-email" } %>
         <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable), placeholder: "Mot de passe", label: false, input_html: { class: "log-password" } %>
         <%= f.input :password_confirmation, required: true, placeholder: "Confirmation du mot de passe", label: false, input_html: { class: "log-password" } %>
-        <%= f.hidden_field :profile_type, value: @_request.fullpath.split("?").last  %>
+        <% if params[:mover] %>
+          <%= hidden_field_tag :mover, "true"  %>
+        <% end %>
         <%= f.button :submit,  "Créer un compte", class: "btn btn-primary btn-primary-log", input_html: { class: "log-action" } %>
       <% end %>
 
       <%#= render "devise/shared/links" %>
     </div>
+    <% if params[:mover].nil? %>
     <div>
       <%- if devise_mapping.omniauthable? %>
         <%- resource_class.omniauth_providers.each do |provider| %>
@@ -28,5 +31,6 @@
         <br>
       <% end -%>
     </div>
+    <% end %>
   </div>
 </div>

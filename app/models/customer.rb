@@ -1,9 +1,9 @@
 class Customer < ActiveRecord::Base
   has_one :user, as: :profile
-  has_many :courses
+  has_many :courses, dependent: :destroy
 
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   has_attached_file :picture,
     styles: { medium: "300x300>", thumb: "100x100>" }

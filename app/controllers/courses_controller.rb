@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
     if current_user.profile_id?
       @courses = Course.all
     elsif current_user.profile_type == "customer" || current_user.profile_type == "Customer"
-      redirect_to new_customer_path
+      redirect_to new_customers_path
     else
       redirect_to new_mover_path
     end
@@ -27,8 +27,10 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.create(course_params)
+    if user_signed_in?  && current_user.profile && current_user.profile_type == "Customer"
+      @course.customer = current_user.profile
+    end
 
-    @course.customer_id = current_user.id
     @course.sku = "course_" + @course.id.to_s
     @course.status = "pending"
     # Set kms / time / price using Google API
@@ -62,7 +64,8 @@ class CoursesController < ApplicationController
       :bucket,
       :status,
       :description,
-      sites_attributes: [ :address, :type_of ]
+      :customer_id,
+      sites_attributes: [ :address, :type_of ],
     )
   end
 

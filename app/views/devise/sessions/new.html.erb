@@ -37,7 +37,7 @@
     <div class="create-account">
       <div class="btn btn-warning create-account-btn">
         <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-          <%= link_to "Créez un nouveau compte", new_user_registration_path + "?customer" %><br />
+          <%= link_to "Créez un nouveau compte", new_user_registration_path %><br />
         <% end -%>
       </div>
     </div>

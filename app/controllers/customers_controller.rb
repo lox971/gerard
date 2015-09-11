@@ -8,7 +8,6 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @customer = current_user.profile
   end
 
   def new
@@ -18,9 +17,13 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    @customer.user = current_user
+    @customer.id = current_user
+    current_user.profile_type = "Customer"
+    current_user.save
     authorize @customer
     if @customer.save
+      current_user.profile = @customer
+      current_user.save
       redirect_to new_course_path
     else
       render :new
@@ -28,12 +31,12 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = current_user.profile
   end
 
   def update
+    @customer = current_user.profile
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer)
+      redirect_to customers_path
     else
       render :edit
     end
@@ -47,7 +50,7 @@ class CustomersController < ApplicationController
   private
 
   def set_customer
-    @customer = Customer.find(params[:id])
+    @customer = current_user.profile
     authorize @customer
   end
 

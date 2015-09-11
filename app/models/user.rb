@@ -13,10 +13,12 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
-      user.picture = auth.info.image
       user.token = auth.credentials.token
       user.token_expiry = Time.at(auth.credentials.expires_at)
-      user.profile_type = "Customer"
+      user.profile = Customer.new(
+        first_name: auth.info.first_name,
+        last_name: auth.info.last_name,
+        picture: auth.info.image.gsub('http://', 'https://'))
     end
   end
 
