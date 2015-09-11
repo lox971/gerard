@@ -7,6 +7,9 @@
   flex-flow: column;
   justify-content: center;
   background: #F4F4F4;
+  &-course{
+    padding: 0px;
+  }
 }
 .log-item {
   background: white;
