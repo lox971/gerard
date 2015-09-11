@@ -1,7 +1,7 @@
 class Course < ActiveRecord::Base
   belongs_to :mover
   belongs_to :customer
-  has_many :sites
+  has_many :sites, dependent: :destroy
   accepts_nested_attributes_for :sites, reject_if: :all_blank, allow_destroy: true
   # geocoded_by :pick_up_address
   # after_validation :geocode, if: :pick_up_address_changed?
@@ -20,7 +20,7 @@ class Course < ActiveRecord::Base
     directions = GoogleDirections.new(pickup_address, drop_address)
     self.time = directions.drive_time_in_minutes
     self.kms = directions.distance_in_miles.fdiv(1.6)
-    self.price = (40 + self.time * 0.6 + self.kms * 2) # TODO: price calculus
+    self.price = (40 + self.time * 0.6 + self.kms * 2)
 
 
 
