@@ -64,12 +64,7 @@ class CoursesController < ApplicationController
       :bucket,
       :status,
       :customer_id,
-<<<<<<< HEAD
       sites_attributes: [ :address, :type_of ],
-
-=======
-      sites_attributes: [ :address, :type_of ]
->>>>>>> master
     )
   end
 
