@@ -27,8 +27,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.create(course_params)
-
-    @course.customer_id = current_user.id
+    @course.customer_id = current_user
     @course.sku = "course_" + @course.id.to_s
     @course.status = "pending"
     # Set kms / time / price using Google API
@@ -61,7 +60,9 @@ class CoursesController < ApplicationController
       :picture,
       :bucket,
       :status,
-      sites_attributes: [ :address, :type_of ]
+      :customer_id,
+      sites_attributes: [ :address, :type_of ],
+
     )
   end
 
