@@ -49,6 +49,8 @@ course_1 = Course.create(
   kms: 1.25,
   time: 11,
   status: "pending",
+  description: "3 eme etage sans ascenseur",
+  picture_file_name: "http://static.cotemaison.fr/medias_8966/w_540,c_limit/canape-petit-prix_4591076.jpg",
 )
 Site_1_1 = Site.create(
   type_of: "pick_up",
@@ -71,6 +73,7 @@ course_2 = Course.create(
   kms: 6.25,
   time: 23,
   status: "pending",
+  description: "3 eme etage sans ascenseur",
 )
 Site_2_1 = Site.create(
   type_of: "pick_up",
