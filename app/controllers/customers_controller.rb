@@ -18,7 +18,7 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    @customer.user = current_user
+    @customer.id = current_user
     authorize @customer
     if @customer.save
       redirect_to new_course_path
