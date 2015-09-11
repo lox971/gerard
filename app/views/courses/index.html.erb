@@ -4,8 +4,10 @@
   <!-- <h2 class='course-item-section'>Course en attente</h2> -->
   <div class="course-item-container">
     <div class="course-item">
-      <% @courses.each do |course| %>
+      <% @courses.each_with_index do |course, i| %>
+      <div id="<%=i%>" class="choice">
       <div class="text-center"><%= image_tag course.picture.url (:medium) %></div>
+      <div class="text-center border-description"><%=course.description %></div>
       <div class="course-distance">
         <div class="course-distance-item">
           <i class='mdi mdi-truck'></i>
@@ -28,15 +30,16 @@
         <div class="course-action-item">
         </div>
       </div>
-      <div class "btn-group">
-        <button class="btn btn-default" type="button"><%= link_to 'Refuser', course_path(course), class: 'btn btn-danger btn-accept' %> <%= link_to 'Accepter', course_path(course), class: 'btn btn-success btn-accept' %></button>
-
+      <div class='bg-blue margin-top--2'>En acceptant la course, vous acceptez les conditions générales de gerard.</div>
+      <div class ="button-choice">
+        <button class="btn btn-danger btn-accept refuse" data="<%=i %>"type="button">Refuser </button>
+        <%= link_to 'Accepter', course_path(course), class: 'btn btn-success btn-accept' %>
+      </div>
       </div>
       <%end%>
     </div>
   </div>
 </div>
-
 
 
 

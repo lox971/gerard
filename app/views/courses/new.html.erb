@@ -1,25 +1,28 @@
 
-<div class= "text-center">
-  <h1>Creer votre demande</h1>
-</div>
+<div class= "log-wrapper">
+  <h2 class="text-center">Que souhaitez-vous déplacer ?</h2>
+  <div class="log-container">
+
 
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <%= simple_form_for @course do |f| %>
-        <%= f.input :picture%>
+        <%= f.input :picture, label: "Photo du produit"%>
+        <%= f.input :description, placeholder: "Dimension, Nombre d'étage...."%>
+
 
         <%= f.fields_for :sites do |ff| %>
-          <%= ff.input :address, placeholder: "Put a pick up address" %>
+          <%= ff.input :address, label: "addresse de prise en charge", placeholder: "Lieu de chargement" %>
           <%= ff.hidden_field :type_of, value: "pick_up" %>
 
 
           <%= f.fields_for :sites do |ff| %>
-            <%= ff.input :address, placeholder: "Put a drop off address" %>
+            <%= ff.input :address, label:"addresse de livraison", placeholder: "Lieu de livraison" %>
             <%= ff.hidden_field :type_of, value: "drop_off" %>
 
 
-          <%= f.button :submit, "Envoyer", class: "btn btn-primary " %>
+          <%= f.button :submit, "Poster votre demande", class: "btn btn-primary " %>
 
           <% end %>
 
@@ -27,6 +30,8 @@
       <% end %>
     </div>
   </div>
+</div>
+</div>
 </div>
 
 <!-- Include Google Maps JS API -->

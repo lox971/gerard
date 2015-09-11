@@ -64,5 +64,26 @@
 .btn-accept{
   font-size: 30px;
 }
+.choice{
+  visibility:hidden;
+  &:first-child{
+    visibility:visible;
+  }
+}
+.border-description{
+  border-style:solid;
+}
+.button-choice{
+  display: flex;
+  .btn-accept{
+    width:50%;
+  }
+}
+.bg-blue {
+  background: #2096F3;
+}
 
+.margin-top--2 {
+  margin-top: -2px
+}
 

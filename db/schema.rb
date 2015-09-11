@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910152100) do
+ActiveRecord::Schema.define(version: 20150911110214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150910152100) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.boolean  "accepted",             default: false
+    t.string   "description"
   end
 
   add_index "courses", ["customer_id"], name: "index_courses_on_customer_id", using: :btree

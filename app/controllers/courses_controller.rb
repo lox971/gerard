@@ -63,6 +63,7 @@ class CoursesController < ApplicationController
       :picture,
       :bucket,
       :status,
+      :description,
       :customer_id,
       sites_attributes: [ :address, :type_of ],
     )
