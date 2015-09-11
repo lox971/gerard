@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if params[:mover]
       new_mover_path
     else
-      new_customer_path
+      new_customers_path
     end
   end
 

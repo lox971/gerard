@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
     if current_user.profile_id?
       @courses = Course.all
     elsif current_user.profile_type == "customer" || current_user.profile_type == "Customer"
-      redirect_to new_customer_path
+      redirect_to new_customers_path
     else
       redirect_to new_mover_path
     end
