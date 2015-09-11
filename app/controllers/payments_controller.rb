@@ -20,7 +20,7 @@ class PaymentsController < ApplicationController
 
     @course.update(payment: charge.to_json, status: 'paid')
 
-    redirect_to customer_path(current_user)
+    redirect_to customers_path(current_user)
 
     rescue Stripe::CardError => e
       flash[:error] = e.message

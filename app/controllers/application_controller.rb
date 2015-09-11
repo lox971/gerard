@@ -37,7 +37,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_pending_course_and_current_user
-    session[:pending_course_id] = nil
     if session[:pending_course_id] && current_user
       course = Course.find(session[:pending_course_id])
       if user_signed_in?  && current_user.profile && current_user.profile_type == "Customer"

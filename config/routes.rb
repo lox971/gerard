@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :customers
+  resource :customers
   resources :courses do
     resources :payments, only: [:new, :create]
     collection do
