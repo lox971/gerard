@@ -17,6 +17,9 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
+    @customer.id = current_user
+    current_user.profile_type = "Customer"
+    current_user.save
     authorize @customer
     if @customer.save
       current_user.profile = @customer
