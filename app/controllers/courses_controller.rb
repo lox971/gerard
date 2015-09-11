@@ -61,6 +61,7 @@ class CoursesController < ApplicationController
       :picture,
       :bucket,
       :status,
+      :description,
       sites_attributes: [ :address, :type_of ]
     )
   end
