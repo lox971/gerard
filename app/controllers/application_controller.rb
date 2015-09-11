@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :profile_type
+    devise_parameter_sanitizer.for(:sign_up)
   end
 
   def user_not_authorized
@@ -39,7 +39,9 @@ class ApplicationController < ActionController::Base
   def check_for_pending_course_and_current_user
     if session[:pending_course_id] && current_user
       course = Course.find(session[:pending_course_id])
-      course.customer_id = current_user.id
+      if user_signed_in?  && current_user.profile && current_user.profile_type == "Customer"
+        course.customer = current_user.profile
+      end
       course.save
       session[:pending_course_id] = nil
       redirect_to course_path(course)
